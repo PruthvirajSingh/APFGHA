@@ -20,6 +20,7 @@ jobs:
       - name: Cache Maven dependencies
         uses: actions/cache@v2
         with:
+          path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
       - name: Build and run tests
@@ -40,17 +41,17 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report action from marketplace
+      - name: Allure Report action from the marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
           keep_reports: 1
-      - name: Deploy report to Github Pages
+
+      - name: Deploy report to GitHub Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.MY_TC }}
           publish_branch: gh-pages
-        
