@@ -24,13 +24,10 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
       - name: Build and run tests
-        run: |
-          cd APFGHA # Assuming APFGHA is the root directory of your project
-          mvn test
+        run: mvn test
 
       - name: Generate Allure report
         run: |
-          cd APFGHA # Assuming APFGHA is the root directory of your project
           npm install -g allure-commandline
           allure --version
           allure generate allure-results --clean
@@ -47,8 +44,8 @@ jobs:
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure_results: APFGHA/allure-results # Assuming allure-results directory is within APFGHA directory
-          allure_history: APFGHA/allure-history # Assuming allure-history directory is within APFGHA directory
+          allure_results: allure-results # Assuming allure-results directory is within the root directory
+          allure_history: allure-history # Assuming allure-history directory is within the root directory
           keep_reports: 1
 
       - name: Deploy report to GitHub Pages
@@ -57,4 +54,4 @@ jobs:
         with:
           github_token: ${{ secrets.MY_TC }}
           publish_branch: gh-pages
-          publish_dir: APFGHA/allure-results-${{ github.run_number }} # Assuming allure-results directory is within APFGHA directory
+          publish_dir: allure-results-${{ github.run_number }} # Assuming allure-results directory is within the root directory
