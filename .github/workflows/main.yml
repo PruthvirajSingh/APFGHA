@@ -6,9 +6,6 @@ jobs:
   test:
     name: Run Selenium Tests
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./APFGHA
 
     steps:
       - name: Checkout code
@@ -28,10 +25,12 @@ jobs:
 
       - name: Build and run tests
         run: |
+          cd APFGHA # Assuming APFGHA is the root directory of your project
           mvn test
 
       - name: Generate Allure report
         run: |
+          cd APFGHA # Assuming APFGHA is the root directory of your project
           npm install -g allure-commandline
           allure --version
           allure generate allure-results --clean
@@ -42,14 +41,14 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: gh-pages
+          path: APFGHA/gh-pages # Assuming gh-pages directory is within APFGHA directory
 
       - name: Allure Report action from the marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure_results: allure-results
-          allure_history: allure-history
+          allure_results: APFGHA/allure-results # Assuming allure-results directory is within APFGHA directory
+          allure_history: APFGHA/allure-history # Assuming allure-history directory is within APFGHA directory
           keep_reports: 1
 
       - name: Deploy report to GitHub Pages
@@ -58,4 +57,4 @@ jobs:
         with:
           github_token: ${{ secrets.MY_TC }}
           publish_branch: gh-pages
-          PUBLISH_DIR: APFGHA/allure-history
+          publish_dir: APFGHA/allure-results-${{ github.run_number }} # Assuming allure-results directory is within APFGHA directory
