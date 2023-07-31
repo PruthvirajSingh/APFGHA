@@ -55,3 +55,4 @@ jobs:
         with:
           github_token: ${{ secrets.MY_TC }}
           publish_branch: gh-pages
+          publish_dir: allure-results-${{ github.run_number }} # Add a unique identifier using the run number
