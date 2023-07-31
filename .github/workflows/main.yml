@@ -49,7 +49,6 @@ jobs:
           allure_results: APFGHA/allure-results # Assuming allure-results directory is within the root directory
           allure_history: APFGHA/allure-history # Assuming allure-history directory is within the root directory
           keep_reports: 1
-
       - name: Deploy report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
