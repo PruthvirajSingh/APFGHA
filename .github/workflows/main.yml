@@ -53,6 +53,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v2
         with:
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.MY_TC }}
           publish_branch: gh-pages
         
