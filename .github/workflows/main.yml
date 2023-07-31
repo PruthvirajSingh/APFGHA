@@ -6,9 +6,7 @@ jobs:
   test:
     name: Run Selenium Tests
     runs-on: ubuntu-latest
-    defaults:
-        run:
-          working-directory: ./
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -54,10 +52,7 @@ jobs:
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.MY_TOKEN }}
         with:
+          github_token: ${{ secrets.TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-
-       
