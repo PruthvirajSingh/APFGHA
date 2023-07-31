@@ -94,7 +94,7 @@ public class BaseClass extends PojoClass {
 	    prefs.put("profile", profile);
 	    options.setExperimentalOption("prefs", prefs);
 	    options.addArguments("--disable-geolocation","--disable-javascript","--disable-popup-blocking", "--disable-notifications", "--disable-cookies");
-	    options.addExtensions(new File("C:\\Inspector salesforce\\aodjmnfhjibkcdimpodiifdjnnncaafh (1).crx"));
+	    options.addExtensions(new File(System.getProperty("user.dir") +"\\Inspector salesforce\\aodjmnfhjibkcdimpodiifdjnnncaafh (1).crx"));
 	    WebDriver driver = new ChromeDriver(options);
 		return driver;
 	}

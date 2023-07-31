@@ -8,7 +8,7 @@
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="Test.Person.HelloWorld">
+			<class name="Test.Person.DatabaseTestCases">
 		
 			</class>
 		</classes>

@@ -1,52 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-07-31T10:40:40 IST" name="Suite" finished-at="2023-07-31T10:40:41 IST" duration-ms="964">
+  <suite started-at="2023-07-31T11:21:58 IST" name="Suite" finished-at="2023-07-31T11:22:55 IST" duration-ms="56939">
     <groups>
     </groups>
-    <test started-at="2023-07-31T10:40:40 IST" name="Test" finished-at="2023-07-31T10:40:41 IST" duration-ms="964">
-      <class name="Test.Person.HelloWorld">
-        <test-method signature="main()[pri:0, instance:Test.Person.HelloWorld@746cd757]" started-at="2023-07-31T10:40:40 IST" name="main" finished-at="2023-07-31T10:40:41 IST" duration-ms="272" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "Utility.Sparkreport.create_info(String)" because "Utility.LogResults.report" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "Utility.Sparkreport.create_info(String)" because "Utility.LogResults.report" is null
-at Utility.LogResults.onTestSuccess(LogResults.java:28)
-at org.testng.internal.TestListenerHelper.runTestListeners(TestListenerHelper.java:112)
-at org.testng.internal.invokers.TestInvoker.runTestResultListener(TestInvoker.java:262)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:751)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+    <test started-at="2023-07-31T11:21:58 IST" name="Test" finished-at="2023-07-31T11:22:55 IST" duration-ms="56939">
+      <class name="Test.Person.DatabaseTestCases">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:21:58 IST" name="launchBrowser" finished-at="2023-07-31T11:22:08 IST" duration-ms="10585" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- main -->
-      </class> <!-- Test.Person.HelloWorld -->
+        </test-method> <!-- launchBrowser -->
+        <test-method is-config="true" signature="extractDataExcleAndObjectOfClassCreations()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:08 IST" name="extractDataExcleAndObjectOfClassCreations" finished-at="2023-07-31T11:22:14 IST" duration-ms="6148" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- extractDataExcleAndObjectOfClassCreations -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:14 IST" name="beforeMethod" finished-at="2023-07-31T11:22:14 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="databaseTesting()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:15 IST" name="databaseTesting" finished-at="2023-07-31T11:22:53 IST" duration-ms="38390" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- databaseTesting -->
+        <test-method is-config="true" signature="closeWindow(org.testng.ITestResult)[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:53 IST" name="closeWindow" finished-at="2023-07-31T11:22:54 IST" duration-ms="994" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=databaseTesting status=SUCCESS method=DatabaseTestCases.databaseTesting()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeWindow -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:54 IST" name="logout" finished-at="2023-07-31T11:22:54 IST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Test.Person.DatabaseTestCases@29a69a35]" started-at="2023-07-31T11:22:54 IST" name="tearDown" finished-at="2023-07-31T11:22:55 IST" duration-ms="311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Test.Person.DatabaseTestCases -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
