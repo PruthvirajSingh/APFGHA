@@ -13,6 +13,7 @@ import java.util.Map;
 public class JsonFileCamp {
 	public static void main(String[] args) {
 		// Load JSON files into strings
+		
 		String jsonFile1 = loadJsonFile("C:\\Aldar\\NewA\\Aldar\\output.json");
 		String jsonFile2 = loadJsonFile("C:\\Aldar\\NewA\\Aldar\\op2.json");
 

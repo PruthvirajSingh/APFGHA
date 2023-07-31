@@ -8,17 +8,11 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Test.Person.DatabaseTestCases">
+      <class name="Test.Person.HelloWorld">
         <methods>
-          <include name="launchBrowser"/>
-          <include name="databaseTesting"/>
-          <include name="beforeMethod"/>
-          <include name="logout"/>
-          <include name="closeWindow"/>
-          <include name="tearDown"/>
-          <include name="extractDataExcleAndObjectOfClassCreations"/>
+          <include name="main"/>
         </methods>
-      </class> <!-- Test.Person.DatabaseTestCases -->
+      </class> <!-- Test.Person.HelloWorld -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
