@@ -6,6 +6,9 @@ jobs:
   test:
     name: Run Selenium Tests
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: APFGHA
 
     steps:
       - name: Checkout code
@@ -25,7 +28,7 @@ jobs:
 
       - name: Build and run tests
         run: mvn test
-        working-directory: APFGHA # Assuming APFGHA is the root directory of your project
+        
 
       - name: Generate Allure report
         run: |
