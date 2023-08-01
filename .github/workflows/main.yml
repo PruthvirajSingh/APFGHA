@@ -28,7 +28,6 @@ jobs:
 
       - name: Build and run tests
         run: mvn test
-        
 
       - name: Generate Allure report
         run: |
@@ -43,7 +42,7 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: APFGHA/gh-pages # Assuming gh-pages directory is within APFGHA directory
+          path: gh-pages # Assuming gh-pages directory is within the repository root
 
       - name: Allure Report action from the marketplace
         uses: simple-elf/allure-report-action@master
@@ -52,6 +51,7 @@ jobs:
           allure_results: APFGHA/allure-results # Assuming allure-results directory is within the root directory
           allure_history: APFGHA/allure-history # Assuming allure-history directory is within the root directory
           keep_reports: 1
+
       - name: Deploy report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
