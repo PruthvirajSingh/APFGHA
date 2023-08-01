@@ -29,6 +29,28 @@ jobs:
           mvn test
       - name: Generate Allure report
         run: |
-            npm install -g allure-commandline
-            allure --version
-            allure generate allure-results --clean
+          npm install -g allure-commandline
+          allure --version
+          allure generate allure-results --clean
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report action from the marketplace
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+          keep_reports: 1
+
+      - name: Deploy report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.MY_TC }}
+          publish_branch: gh-pages
