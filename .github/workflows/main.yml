@@ -27,11 +27,31 @@ jobs:
       - name: Build and run tests
         run: |
           mvn test
+
+      - name: Install Java (required for Allure)
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12' # You can choose the appropriate version.
+
+      - name: Download and install Allure command-line tool
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.15.0/allure-2.15.0.zip -OutFile allure.zip
+          Expand-Archive allure.zip -DestinationPath $env:ALLURE_HOME
+          echo "ALLURE_HOME=$env:ALLURE_HOME" >> $env:GITHUB_ENV
+          echo "PATH=$env:ALLURE_HOME\bin;$env:PATH" >> $env:GITHUB_ENV
+        shell: pwsh
+
+      # Run your tests and generate Allure results here
+
+      - name: Generate Allure Report
+        run: allure generate allure-results -o allure-report --clean
+
       - name: Generate Allure report
         run: |
           npm install -g allure-commandline
           allure --version
           allure generate allure-results --clean
+
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -39,7 +59,7 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-
+        
       - name: Allure Report action from the marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
