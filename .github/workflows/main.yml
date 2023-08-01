@@ -27,35 +27,8 @@ jobs:
       - name: Build and run tests
         run: |
           mvn test
-
-      - name: Install Java (required for Allure)
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12' # You can choose the appropriate version.
-
-      - name: Download and install Allure command-line tool
+      - name: Generate Allure report
         run: |
-          Expand-Archive allure.zip -DestinationPath $env:ALLURE_HOME
-          echo "ALLURE_HOME=$env:ALLURE_HOME" >> $env:GITHUB_ENV
-          echo "PATH=$env:ALLURE_HOME\bin;$env:PATH" >> $env:GITHUB_ENV
-        shell: pwsh
-
-      # Run your tests and generate Allure results here
-
-      - name: Generate Allure Report
-        run: allure generate allure-results -o allure-report --clean
-
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Deploy report to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.MY_TC }}
-          publish_branch: gh-pages
+            npm install -g allure-commandline
+            allure --version
+            allure generate allure-results --clean
