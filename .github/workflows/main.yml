@@ -35,7 +35,6 @@ jobs:
 
       - name: Download and install Allure command-line tool
         run: |
-          wget https://github.com/allure-framework/allure2/releases/download/2.15.0/allure-2.15.0.zip -OutFile allure.zip
           Expand-Archive allure.zip -DestinationPath $env:ALLURE_HOME
           echo "ALLURE_HOME=$env:ALLURE_HOME" >> $env:GITHUB_ENV
           echo "PATH=$env:ALLURE_HOME\bin;$env:PATH" >> $env:GITHUB_ENV
@@ -46,12 +45,6 @@ jobs:
       - name: Generate Allure Report
         run: allure generate allure-results -o allure-report --clean
 
-      - name: Generate Allure report
-        run: |
-          npm install -g allure-commandline
-          allure --version
-          allure generate allure-results --clean
-
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -59,24 +52,6 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-        
-      - name: Allure Report action from the marketplace
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        with:
-          allure_results: allure-results
-          allure_history: allure-history
-          keep_reports: 1
-          allure_report: allure-report
-          gh_pages: gh-pages
-          github_run_num: ${{ github.run_number }}
-          github_run_id: ${{ github.run_id }}
-          github_repo: ${{ github.repository }}
-          github_repo_owner: ${{ github.repository_owner }}
-        env:
-          JAVA_HOME: C:\hostedtoolcache\windows\jdk\12.0.2\x64
-          JAVA_HOME_12.0.2_x64: C:\hostedtoolcache\windows\jdk\12.0.2\x64
-          JAVA_HOME_12_0_2_X64: C:\hostedtoolcache\windows\jdk\12.0.2\x64
 
       - name: Deploy report to GitHub Pages
         if: always()
